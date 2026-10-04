@@ -206,9 +206,9 @@ function App(): JSX.Element {
 				updatedRoutes = [...updatedRoutes, SUPPORT_ROUTE];
 			} else {
 				// if not a cloud user then remove billing and add list licenses route
+				// TWLM fork: keep the integrations route on community self-hosted.
 				updatedRoutes = updatedRoutes.filter(
-					(route) =>
-						route?.path !== ROUTES.BILLING && route?.path !== ROUTES.INTEGRATIONS,
+					(route) => route?.path !== ROUTES.BILLING,
 				);
 				updatedRoutes = [...updatedRoutes, LIST_LICENSES];
 			}

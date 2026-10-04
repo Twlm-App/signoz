@@ -288,8 +288,9 @@ function SideNav({ isPinned }: { isPinned: boolean }): JSX.Element {
 	}, [isFetchingUserPreferences, userPreferences]);
 
 	const computedSecondaryMenuItems = useMemo(() => {
-		const shouldShowIntegrationsValue =
-			(isCloudUser || isEnterpriseSelfHostedUser) && (isAdmin || isEditor);
+		// TWLM fork: integrations are available on community self-hosted too
+		// (the backend serves them without a licence); keep the role check.
+		const shouldShowIntegrationsValue = isAdmin || isEditor;
 
 		const isEnabledForItem = (item: SidebarItem): boolean | undefined => {
 			if (item.key === ROUTES.INTEGRATIONS) {
